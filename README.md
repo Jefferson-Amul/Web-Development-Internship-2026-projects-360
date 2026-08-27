@@ -1,2 +1,30 @@
-# Web-Development-Internship-2026-projects-360
-A collection of my Web Development Internship projects completed from Week 1 to Week 4 using HTML, CSS, and JavaScript.
+# Web Development Tasks
+
+This repository contains my web development tasks completed during my internship.
+
+## Tasks
+
+- Task 1 – HTML Webpage
+- Task 2 – Portfolio Webpage
+- Task 3 – Web Development Task
+- Task 4 – Intern Axis Internship Platform
+
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+
+## Project Files
+
+- `task1.html`
+- `task2.html`
+- `task3.html`
+- `task4.html`
+- `2024PECCS558.jpg`
+
+## How to Run
+
+Open any `.html` file in a web browser.
+
+For Task 4, open `task4.html` to view the Intern Axis project.
