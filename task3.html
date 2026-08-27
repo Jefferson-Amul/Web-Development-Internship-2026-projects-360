@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<title>To-Do List</title>
+  		<style>
+    			h1 {
+      				text-align: center;
+				background: linear-gradient(to right, lightblue, lightgreen, lightyellow);
+    			}
+    			hr {
+      				border: 2px solid black;
+    			}
+    			.addButton {
+      				display: block;
+      				margin-left: auto;
+      				cursor: pointer;
+      				width: 70px;
+      				height: 70px;
+    			}
+    			.addButton:hover {
+      				content: url("https://img.icons8.com/?size=70&id=63cks9CKJ76F&format=png&color=098a00")
+    			}
+    			#row {
+      				display: flex;
+      				gap: 50px;
+      				flex-wrap: wrap;
+      				align-items: flex-start;
+    			}
+    			.card {
+      				width: 200px;
+      				height: 200px;
+      				border: 2px solid black;
+  				display: flex;
+      				flex-direction: column;
+				border-radius: 15px;
+      				/* Prevent content from going outside the card */
+      				overflow: hidden;
+				transition: transform 0.2s ease, filter 0.2s ease;
+    			}
+			.card:hover {
+				transform: scale(1.02);
+  				filter: brightness(1.2);
+				box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+			}
+    			.list {
+      				margin: 0;
+      				padding-left: 25px;
+
+      				/* Only the list scrolls */
+      				overflow-y: auto;
+
+      				/* Takes the available space */
+      				flex: 1;
+    			}
+    			.listInput {
+      				height: 28px;
+      				width: 150px;
+      				padding: 0 8px;
+      				font-size: 14px;
+      				box-sizing: border-box;
+    			}
+    			.bottomRow {
+      				display: flex;
+      				align-items: center;
+      				justify-content: space-between;
+      				gap: 10px;
+      				padding: 8px 10px;
+    			}
+    			.addItemButton {
+      				width: 24px;
+      				height: 24px;
+      				cursor: pointer;
+    			}
+    			li {
+      				cursor: pointer;
+      				margin: 6px 0;
+    			}
+    			li:hover {
+      				background: rgb(255, 153, 153);
+    			}
+  		</style>
+	</head>
+	<body>
+  		<h1><i>To-Do List</i></h1>
+  		<hr><br>
+  		<img class="addButton" src="https://img.icons8.com/?size=70&id=63cks9CKJ76F&format=png&color=0ff000" alt="Add Card" onclick="addCard()"><br>
+  		<div id="row"></div>
+
+  		<script>
+    			let cardCount = 0;
+
+    			function addTask(input) {
+      				const card = input.closest(".card");
+      				const list = card.querySelector(".list");
+      				const taskText = input.value.trim();
+      				if (taskText === "") {
+        				input.focus();
+        				return;
+      				}
+      				const task = document.createElement("li");
+      				task.textContent = taskText;
+				task.addEventListener("click", function () {
+    					if (task.style.backgroundColor === "rgb(255, 153, 153)") {
+        					task.style.backgroundColor = "";
+    					} else {
+        					task.style.backgroundColor = "rgb(255, 153, 153)";
+    					}
+				});
+      				task.addEventListener("dblclick", function () {
+					event.stopPropagation();
+        				task.remove();
+      				});
+      				list.appendChild(task);
+      				input.value = "";
+      				input.focus();
+    			}
+
+    			function handleEnter(event) {
+
+      				if (event.key === "Enter") {
+        				addTask(event.target);
+      				}
+    			}
+
+    			function createCard() {
+      				const card = document.createElement("div");
+      				card.className = "card";
+      				const list = document.createElement("ol");
+      				list.className = "list";
+      				const bottomRow = document.createElement("div");
+      				bottomRow.className = "bottomRow";
+      				const input = document.createElement("input");
+      				input.className = "listInput";
+      				input.placeholder = "Type & press Enter...";
+      				input.addEventListener("keydown", handleEnter);
+      				const addButton = document.createElement("img");
+      				addButton.src = "https://img.icons8.com/?size=40&id=63cks9CKJ76F&format=png&color=0ff000";
+      				addButton.alt = "Add Task";
+      				addButton.className = "addItemButton";
+      				addButton.addEventListener("click", function () {
+        				addTask(input);
+      				});
+      				bottomRow.appendChild(input);
+      				bottomRow.appendChild(addButton);
+      				card.appendChild(list);
+      				card.appendChild(bottomRow);
+      				card.addEventListener("dblclick", function () {
+        				card.remove();
+      				});
+      				return card;
+    			}
+
+    			function addCard() {
+      				cardCount++;
+      				const row = document.getElementById("row");
+      				const card = createCard();
+      				row.appendChild(card);
+    			}
+    			addCard();
+  		</script>
+	</body>
+</html>

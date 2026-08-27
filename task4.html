@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Intern Axis</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<style>
+			html {
+    				scroll-behavior: smooth;
+				
+			}
+			body {
+				font-size: 23px;
+			}
+			header {
+				background: linear-gradient(138deg, rgb(32, 201, 255) 36.7%, rgb(0, 8, 187) 84.4%, rgb(255, 255, 255) 119.7%);
+
+				color: white;
+			}
+			footer {
+				background: linear-gradient(138deg, rgb(32, 201, 255) 36.7%, rgb(0, 8, 187) 84.4%, rgb(255, 255, 255) 119.7%);
+
+				color: black;
+				padding-left: 5%;
+			}
+			h1 {
+				text-align: center;
+			}
+			.material-icons {
+				margin:0px;
+				padding: 8px 20px;
+				background: white;
+			}
+			nav a:hover {
+    				opacity: 0.7;
+			}
+			#home {
+				background: linear-gradient(138deg, rgb(32, 201, 255) 36.7%, rgb(0, 8, 187) 84.4%, rgb(255, 255, 255) 119.7%);
+				padding: 300px 0px 100px 5%;
+			}
+			section {
+    				padding: 60px 10%;
+			}
+			.service {
+    				display: inline-block;
+    				width: 100%;
+    				margin: 15px;
+    				padding: 20px;
+    				border-radius: 15px;
+    				background: #f2f2f2;
+    				vertical-align: top;
+			}
+
+			.service:hover {
+    				transform: translateY(-5px);
+				border-left: 7px solid black;
+				border-bottom: 7px solid black;
+			}
+			.card {
+    				display: inline-block;
+    				width: 50%;
+    				margin: 15px;
+    				padding: 20px;
+    				border-radius: 15px;
+    				background: #f2f2f2;
+    				vertical-align: top;
+			}
+
+			.card:hover {
+    				transform: translateY(-5px);
+				border-left: 7px solid black;
+				border-bottom: 7px solid black;
+			}
+			.about {
+    				display: inline-block;
+    				width: 100%;
+    				margin: 15px;
+   				padding: 20px;
+    				border-radius: 15px;
+    				background: #f2f2f2;
+    				vertical-align: top;
+			}
+
+			.about:hover {
+    				transform: translateY(-5px);
+			}
+			.button {
+    				display: inline-block;
+    				padding: 10px 20px;
+    				background: white;
+    				text-decoration: none;
+    				border-radius: 5px;
+			}
+			.menu {
+    				display: inline-block;
+    				cursor: pointer;
+    				background: white;
+    				color: black;
+    				padding: 8px;
+    				width: 30px;
+    				text-align: center;
+			}
+			#mainNav {
+    				display: none;
+				
+			}
+
+			#mainNav.show {
+    				display: inline-block;
+			}
+			#mainNav a {
+    				opacity: 0;
+    				visibility: hidden;
+    				display: inline-block;
+			}
+
+			#mainNav.show a {
+    				animation: appear 0.5s ease forwards;
+			}
+
+			#mainNav.show a:nth-child(1) {
+    				animation-delay: 0.1s;
+			}
+
+			#mainNav.show a:nth-child(2) {
+    				animation-delay: 0.2s;
+			}
+
+			#mainNav.show a:nth-child(3) {
+    				animation-delay: 0.3s;
+			}
+
+			#mainNav.show a:nth-child(4) {
+    				animation-delay: 0.4s;
+			}
+			#mainNav.show a:nth-child(5) {
+    				animation-delay: 0.5s;
+			}
+			#mainNav.show a:nth-child(6) {
+    				animation-delay: 0.6s;
+			}
+			
+			@keyframes appear {
+    				from {
+        				opacity: 0;
+        				visibility: hidden;
+        				transform: translateX(-10px);
+    				}
+
+    				to {
+        				opacity: 1;
+        				visibility: visible;
+        				transform: translateX(0);
+    				}
+			}
+			.dark-mode {
+    				background-color: #222;
+    				color: white;
+			}
+
+			.dark-mode .service,.dark-mode .card,.dark-mode .about {
+    				background-color: #333;
+    				color: white;
+			}
+
+    			.dark-mode .button {
+        			background-color: #333;
+        			color: white;
+    			}
+
+    			.dark-mode input,.dark-mode textarea {
+        			background-color: #333;
+        			color: white;
+    			}
+    			.dark-mode header {
+        			background: linear-gradient(90deg, #164e63, #1e3a5f, #111827);
+    			}
+
+
+    			.dark-mode #home {
+        			background: linear-gradient(135deg, #164e63 0%, #1e3a5f 50%, #111827 100%);
+    			}
+
+
+    			.dark-mode .button {
+        			background: #444;
+        			color: white;
+    			}
+
+    			.dark-mode button {
+        			background: #444;
+        			color: white;
+        			border: 1px solid #777;
+    			}
+
+    			.dark-mode footer {
+        			background: linear-gradient(90deg, #164e63, #1e3a5f, #111827);
+        			color: white;
+    			}
+
+    			.dark-mode nav a {
+        			color: white;
+    			}
+    			.dark-mode .material-icons {
+        			background: #263b4a;
+        			color: white;
+    			}
+    			.dark-mode .menu {
+        			background: #263b4a;
+        			color: white !important;
+    			}
+			.slider-card {
+    				width: 60%;
+        			max-width: 600px;
+        			margin: 40px auto;
+          			background: white;
+          			border-radius: 15px;
+          			overflow: hidden;
+          			position: relative;
+          			box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      			}
+
+      			.slides {
+          			display: flex;
+          			transition: transform 0.5s ease;
+      			}
+
+      			.slide {
+          			min-width: 100%;
+          			text-align: center;
+          			padding-bottom: 20px;
+      			}
+
+      			.slide img {
+          			width: 100%;
+          			height: 250px;
+          			object-fit: cover;
+      			}
+
+      			.slide h3 {
+         			margin-bottom: 5px;
+      			}
+
+      			.slide p {
+          			margin: 5px 20px;
+      			}
+
+      			.prev,.next {
+          			position: absolute;
+          			top: 40%;
+          			transform: translateY(-50%);
+          			border: none;
+          			background: rgba(0,0,0,0.5);
+          			color: white;
+          			padding: 10px 15px;
+          			cursor: pointer;
+          			font-size: 20px;
+      			}
+
+      			.prev {
+          			left: 10px;
+      			}
+
+      			.next {
+          			right: 10px;
+      			}
+      			.dark-mode .slider-card {
+          			background: #333;
+          			color: white;
+      			}
+			.faq {
+				margin: 15px 0;
+			}
+
+			.faq-question {
+				width: 100%;
+				padding: 15px;
+				border: none;
+				background: #f2f2f2;
+				color: black;
+				text-align: left;
+				font-size: 20px;
+				cursor: pointer;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.faq-answer {
+				display: none;
+				padding: 15px;
+				background: #e8e8e8;
+			}
+
+			.faq-answer.show {
+				display: block;
+			}
+
+			.dark-mode .faq-question {
+				background: #333;
+				color: white;
+			}
+
+			.dark-mode .faq-answer {
+				background: #444;
+				color: white;
+			}
+			form {
+				max-width: 600px;
+				margin: 20px auto;
+			}
+
+			form label {
+				display: block;
+				margin-top: 15px;
+			}
+
+			form input,
+			form textarea {
+				width: 100%;
+				padding: 10px;
+				margin-top: 5px;
+				box-sizing: border-box;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				font-size: 18px;
+			}
+
+			form textarea {
+				height: 120px;
+				resize: vertical;
+			}
+
+			form button {
+				margin-top: 15px;
+				padding: 10px 20px;
+				cursor: pointer;
+				border: none;
+				border-radius: 5px;
+			}
+			.contact-info {
+				max-width: 600px;
+				margin: 30px auto;
+				padding: 20px;
+				background: #f2f2f2;
+				border-radius: 15px;
+			}
+
+			.contact-info h3 {
+				margin-top: 0;
+			}
+
+			.contact-info p {
+				margin: 10px 0;
+			}
+			.dark-mode .contact-info {
+				background: #333;
+				color: white;
+			}
+			#topBtn {
+				display: none;
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				padding: 12px 16px;
+				border: none;
+				border-radius: 50%;
+				background: #0064bb;
+				color: white;
+				font-size: 20px;
+				cursor: pointer;
+			}
+
+			#topBtn:hover {
+				opacity: 0.7;
+			}
+			#themeBtn {
+                		float: right;
+                		margin-right: 20px;
+                		padding: 8px 12px;
+                		border: none;
+                		border-radius: 50%;
+                		background: white;
+                		color: black;
+                		font-size: 20px;
+                		cursor: pointer;
+            		}
+
+            		#themeBtn:hover {
+                		opacity: 0.7;
+            		}
+
+            		.dark-mode #themeBtn {
+                		background: #263b4a;
+                		color: white;
+            		}
+			@media (max-width: 768px) {
+    				.about,.service,.card {
+        				display: block;
+        				width: 80%;
+        				margin: 15px auto;
+    				}
+
+    				#home {
+        				padding: 100px 20px;
+    				}
+				body {
+					font-size: 20px;
+				}
+				.slider-card {
+        				width: 90%;
+    				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1><i>INTERN AXIS</i></h1>
+			<i class="material-icons menu" onclick="toggleMenu()" style="color:black;">menu</i><nav id="mainNav">
+
+				<a href="#home"><i class="material-icons">home</i></a><a href="#about"><i class="material-icons">info</i></a><a href="#services"><i class="material-icons">build</i></a><a href="#projects"><i class="material-icons">work</i></a><a href="#faq"><i class="material-icons">help</i></a><a href="#contact"><i class="material-icons" style="border-start-end-radius:50px;">contact_mail</i></a>
+
+			</nav>
+			<button id="themeBtn" onclick="toggleTheme()">🌙</button>
+		</header><br>
+		<main>
+			<section id="home">
+				<h2>Discover Internship Opportunity</h2>
+				<p>Find your internship opportunities and start building your career.</p>
+				<a href="#projects" class="button">Find Internship</a>
+			</section>
+			<section id="about">
+				<h2>About Intern Axis</h2>
+				<p>Intern Axis is a platform that helps students discover internship opportunities and explore different career domains.</p>
+				<p>Our goal is to make the internship search simple and organized by bringing opportunities, career information, and application resources together in one place.</p>
+
+				<div class="slider-card">
+          				<div class="slides">
+              					<div class="slide">
+                  					<img src="https://media.geeksforgeeks.org/wp-content/uploads/20240722160924/Top-10-Web-Development-Courses-For-Beginners--1.webp" alt="Web Development Internship">
+                  					<h3>Web Development Internship</h3>
+                  			      		<p>Build your skills with real-world projects.</p>
+              					</div>
+
+              			      		<div class="slide">
+                  			      		<img src="https://www.intellisoft.com.sg/wp-content/uploads/2018/02/python-training.png" alt="Python Internship">
+                  			      		<h3>Python Development Internship</h3>
+                  			      		<p>Improve your Python and programming skills.</p>
+              			      		</div>
+
+              			      		<div class="slide">
+                  			      		<img src="https://cioinfluence.com/wp-content/uploads/2021/04/AI-and-ML.png" alt="AI Internship">
+                  			      		<h3>AI & Machine Learning Internship</h3>
+                  			      		<p>Explore AI and machine learning opportunities.</p>
+              			      		</div>
+          			      	</div>
+
+          				<button class="prev" onclick="changeSlide(-1)">❮</button>
+          				<button class="next" onclick="changeSlide(1)">❯</button>
+      				</div>
+			</section>
+			<section id="services">
+				<h2>Our Services</h2>
+
+    				<div class="service">
+        				<h3>Internship Search</h3>
+        				<p>Find internship opportunities based on your interests and skills.</p>
+    				</div>
+
+    				<div class="service">
+        				<h3>Domain-Based Opportunities</h3>
+        				<p>Explore internships in Web Development, AI/ML, Data Science, Cybersecurity and more.</p>
+    				</div>
+
+    				<div class="service">
+        				<h3>Internship Details</h3>
+        				<p>View important information such as skills, duration, eligibility and location.</p>
+    				</div>
+
+    				<div class="service">
+        				<h3>Application Support</h3>
+        				<p>Get guidance on finding and applying for suitable internships.</p>
+    				</div>
+
+    				<div class="service">
+        				<h3>Career Resources</h3>
+        				<p>Access resources to improve your technical and professional skills.</p>
+    				</div>
+
+    				<div class="service">
+        				<h3>Project Opportunities</h3>
+        				<p>Discover projects that help you gain practical experience.</p>
+    				</div>
+			</section>
+			<section id="projects">
+				<h2>Projects & Internships</h2>
+
+    				<article class="card">
+        				<h3>Web Development Internship</h3>
+        				<p><strong>Company:</strong> ABC Technologies</p>
+        				<p><strong>Skills:</strong> HTML, CSS, JavaScript</p>
+        				<p><strong>Duration:</strong> 3 Months</p>
+        				<p><strong>Mode:</strong> Online</p>
+        				<button>View Details</button>
+        				<button>Apply Now</button>
+    				</article>
+
+    				<article class="card">
+        				<h3>Python Development Internship</h3>
+        				<p><strong>Company:</strong> XYZ Solutions</p>
+        				<p><strong>Skills:</strong> Python, SQL</p>
+        				<p><strong>Duration:</strong> 2 Months</p>
+        				<p><strong>Mode:</strong> Hybrid</p>
+        				<button>View Details</button>
+        				<button>Apply Now</button>
+    				</article>
+
+    				<article class="card">
+        				<h3>AI & Machine Learning Internship</h3>
+        				<p><strong>Company:</strong> Tech Innovations</p>
+        				<p><strong>Skills:</strong> Python, Machine Learning</p>
+        				<p><strong>Duration:</strong> 3 Months</p>
+        				<p><strong>Mode:</strong> Online</p>
+        				<button>View Details</button>
+        				<button>Apply Now</button>
+    				</article>
+			</section>
+				<section id="faq">
+				<h2>Frequently Asked Questions</h2>
+
+				<div class="faq">
+					<button class="faq-question" onclick="toggleFAQ(this)">
+						What is Intern Axis?
+						<span>+</span>
+					</button>
+					<div class="faq-answer">
+						<p>Intern Axis is a platform that helps students discover internship opportunities and explore different career domains.</p>
+					</div>
+				</div>
+
+				<div class="faq">
+					<button class="faq-question" onclick="toggleFAQ(this)">
+						How can I find an internship?
+						<span>+</span>
+					</button>
+					<div class="faq-answer">
+						<p>Explore the available internship opportunities in the Projects & Internships section.</p>
+					</div>
+				</div>
+
+				<div class="faq">
+					<button class="faq-question" onclick="toggleFAQ(this)">
+						What skills are required?
+						<span>+</span>
+					</button>
+					<div class="faq-answer">
+						<p>Skills depend on the internship. Common skills include HTML, CSS, JavaScript, Python, SQL and machine learning.</p>
+					</div>
+				</div>
+
+				<div class="faq">
+					<button class="faq-question" onclick="toggleFAQ(this)">
+						Can beginners apply?
+						<span>+</span>
+					</button>
+					<div class="faq-answer">
+						<p>Yes. Some internships are suitable for beginners, depending on their eligibility requirements.</p>
+					</div>
+				</div>
+			</section>
+			<section id="contact">
+				<h2>Contact Us</h2>
+
+    				<p>Have a question or need help finding an internship? Get in touch with us.</p>
+
+    				<form onsubmit="return validateForm()" class="contact-info">
+        				<label for="name">Name:</label>
+        				<input type="text" id="name" name="name">
+
+        				<label for="email">Email:</label>
+        				<input type="email" id="email" name="email">
+
+        				<label for="subject">Subject:</label>
+        				<input type="text" id="subject" name="subject">
+
+        				<label for="message">Message:</label>
+        				<textarea id="message" name="message"></textarea>
+
+        				<button type="submit" style="border:1px solid black;">Send Message</button>
+    				</form>
+
+    				<div class="contact-info">
+        				<h3>Contact Information</h3>
+        				<p>Email: contact@internaxis.com</p>
+        				<p>Location: Chennai, India</p>
+    				</div>
+			</section>
+		</main>
+		<footer>
+			<p>&copy; 2026 Intern Axis</p>
+			<p>Find internships. Build skills. Start your career.</p>
+			<ul>
+			<nav>
+        			<li><a href="#home">Home</a><br></li>
+        			<li><a href="#about">About</a><br></li>
+        			<li><a href="#services">Services</a><br></li>
+        			<li><a href="#projects">Projects & Internships</a><br></li>
+        			<li><a href="#contact">Contact</a><br></li>
+    			</nav>
+			</ul>
+		</footer>
+		<button id="topBtn" onclick="goToTop()">↑</button>
+		<script>
+			function toggleMenu() {
+    				document.querySelector("#mainNav").classList.toggle("show");
+			}
+			function validateForm() {
+    				let name = document.getElementById("name").value;
+    				let email = document.getElementById("email").value;
+    				let subject = document.getElementById("subject").value;
+    				let message = document.getElementById("message").value;
+
+    				if (name === "" || email === "" || subject === "" || message === "") {
+        				alert("Please fill in all the fields.");
+        				return false;
+    				}
+
+    				alert("Form submitted successfully!");
+    				return true;
+			}
+			function toggleTheme() {
+        		document.body.classList.toggle("dark-mode");
+			    	let button = document.getElementById("themeBtn");
+                		if (document.body.classList.contains("dark-mode")) {
+                   			button.textContent = "☀️";
+                		} else {
+                    			button.textContent = "🌙";
+                		}
+    			}
+			let currentSlide = 0;
+
+      			function changeSlide(direction) {
+          			const slides = document.querySelector(".slides");
+          			const totalSlides = document.querySelectorAll(".slide").length;
+
+          			currentSlide += direction;
+
+          			if (currentSlide >= totalSlides) {
+              				currentSlide = 0;
+          			}
+
+          			if (currentSlide < 0) {
+              				currentSlide = totalSlides - 1;
+          			}
+
+          			slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+      			}
+			setInterval(function() {
+    				changeSlide(1);
+			}, 3000);
+			function toggleFAQ(button) {
+				let answer = button.nextElementSibling;
+				answer.classList.toggle("show");
+
+				let symbol = button.querySelector("span");
+
+				if (answer.classList.contains("show")) {
+					symbol.textContent = "-";
+				} else {
+					symbol.textContent = "+";
+				}
+			}
+			window.onscroll = function() {
+				let button = document.getElementById("topBtn");
+
+				if (document.documentElement.scrollTop > 300) {
+					button.style.display = "block";
+				} else {
+					button.style.display = "none";
+				}
+			};
+
+			function goToTop() {
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth"
+				});
+			}
+		</script>
+	</body>
+</html>
